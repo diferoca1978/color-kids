@@ -1,0 +1,118 @@
+---
+import LogoBrand from "../ui/LogoBrand.astro";
+---
+
+<!-- ========== HEADER ========== -->
+<header
+  class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm"
+>
+  <nav
+    class="mt-0 relative w-full bg-white rounded-3xl mx-2 py-2.5 backdrop-blur-md md:w-11/12 md:flex md:items-center md:justify-between md:py-0 md:px-4 md:mx-auto"
+    aria-label="Global"
+  >
+    <div class="px-4 md:px-0 flex justify-between items-center">
+      <!-- Logo -->
+
+      <a href="/" aria-label="Brand Logo">
+        <LogoBrand class="w-24 h-8" />
+      </a>
+
+      <!-- End Logo -->
+
+      <div class="md:hidden">
+        <!-- Toggle Button -->
+        <button
+          type="button"
+          class="hs-collapse-toggle flex justify-center items-center size-6 text-colorKidsorangeWeb focus:outline-none"
+          id="hs-navbar-header-floating-collapse"
+          aria-expanded="false"
+          aria-controls="hs-navbar-header-floating"
+          aria-label="Toggle navigation"
+          data-hs-collapse="#hs-navbar-header-floating"
+        >
+          <svg
+            class="hs-collapse-open:hidden shrink-0 size-5"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><line x1="3" x2="21" y1="6" y2="6"></line><line
+              x1="3"
+              x2="21"
+              y1="12"
+              y2="12"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg
+          >
+          <svg
+            class="hs-collapse-open:block hidden shrink-0 size-6"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+          >
+        </button>
+        <!-- End Toggle Button -->
+      </div>
+    </div>
+
+    <div
+      id="hs-navbar-header-floating"
+      class="hidden hs-collapse overflow-hidden transition-all duration-300 basis-full grow md:block"
+      aria-labelledby="hs-navbar-header-floating-collapse"
+    >
+      <div
+        class="flex flex-col md:flex-row md:items-center md:justify-end gap-2 md:gap-3 mt-3 md:mt-0 py-2 md:py-0 md:ps-7"
+      >
+        <a
+          id="link"
+          class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-none text-lg text-gray-500 hover:text-gray-800 focus:outline-none"
+          href="/">Inicio</a
+        >
+        <a
+          id="link"
+          class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-none text-lg text-gray-500 hover:text-gray-800 focus:outline-none"
+          href="/services">Servicios</a
+        >
+        <a
+          id="link"
+          class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-none text-lg text-gray-500 hover:text-gray-800 focus:outline-none"
+          href="/about">Nosotros</a
+        >
+        <a
+          id="link"
+          class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-none text-lg text-gray-500 hover:text-gray-800 focus:outline-none"
+          href="/blog">Blog</a
+        >
+      </div>
+    </div>
+  </nav>
+  <!-- ========== END HEADER ========== -->
+</header>
+
+<script>
+  const activeLinks = document.querySelectorAll("#link");
+
+  const currentPath = window.location.pathname;
+
+  activeLinks.forEach((link) => {
+    if (link.getAttribute("href") === currentPath) {
+      link.classList.add(
+        "text-colorKidsorangeWeb",
+        "underline",
+        "underline-offset-8",
+      );
+    } else {
+      link.classList.remove("text-colorKidsorangeWeb");
+    }
+  });
+</script>
