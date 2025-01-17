@@ -36,16 +36,32 @@ import LogoBrand from "../ui/LogoBrand.astro";
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><line x1="3" x2="21" y1="6" y2="6"></line><line
-              x1="3"
-              x2="21"
-              y1="12"
-              y2="12"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg
+            ><rect width="24" height="24" fill="none"></rect><g
+              fill="none"
+              stroke="#2897fd"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              ><path d="M5 5L19 19M5 19L19 5"
+                ><animate
+                  fill="freeze"
+                  attributeName="d"
+                  dur="0.4s"
+                  values="M5 5L19 19M5 19L19 5;M5 5L19 5M5 19L19 19"
+                ></animate></path
+              ><path d="M12 12H12" opacity="0"
+                ><animate
+                  fill="freeze"
+                  attributeName="d"
+                  begin="0.2s"
+                  dur="0.4s"
+                  values="M12 12H12;M5 12H19"></animate><set
+                  fill="freeze"
+                  attributeName="opacity"
+                  begin="0.2s"
+                  to="1"></set></path
+              ></g
+            ></svg
           >
           <svg
             class="hs-collapse-open:block hidden shrink-0 size-6"
@@ -100,19 +116,21 @@ import LogoBrand from "../ui/LogoBrand.astro";
 </header>
 
 <script>
-  const activeLinks = document.querySelectorAll("#link");
+  document.addEventListener("astro:page-load", () => {
+    const activeLinks = document.querySelectorAll("#link");
 
-  const currentPath = window.location.pathname;
+    const currentPath = window.location.pathname;
 
-  activeLinks.forEach((link) => {
-    if (link.getAttribute("href") === currentPath) {
-      link.classList.add(
-        "text-colorKidsorangeWeb",
-        "underline",
-        "underline-offset-8",
-      );
-    } else {
-      link.classList.remove("text-colorKidsorangeWeb");
-    }
+    activeLinks.forEach((link) => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add(
+          "text-colorKidsorangeWeb",
+          "underline",
+          "underline-offset-8",
+        );
+      } else {
+        link.classList.remove("text-colorKidsorangeWeb");
+      }
+    });
   });
 </script>
