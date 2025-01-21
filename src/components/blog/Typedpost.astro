@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { data } = post;
+const { title, description, image } = data;
+---
+
+<div>
+  <!-- Card -->
+  <a
+    class="group block rounded-xl overflow-hidden focus:outline-none shadow-lg p-4 bg-white hover:shadow-xl transition-shadow duration-500 ease-in-out"
+    href="#"
+  >
+    <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+      <div
+        class="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-44"
+      >
+        <Image
+          class="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out size-full absolute top-0 start-0 object-cover rounded-xl"
+          src={image}
+          alt={title}
+          width={500}
+          height={500}
+          quality="mid"
+        />
+      </div>
+
+      <div class="grow">
+        <h3
+          class="text-xl font-semibold text-gray-500 group-hover:text-gray-600"
+        >
+          {title}
+        </h3>
+        <p class="mt-3 text-gray-500">
+          {description}
+        </p>
+        <p
+          class="mt-4 inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 group-hover:underline group-focus:underline font-medium"
+        >
+          Read more
+          <svg
+            class="shrink-0 size-4"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg
+          >
+        </p>
+      </div>
+    </div>
+  </a>
+  <!-- End Card -->
+</div>

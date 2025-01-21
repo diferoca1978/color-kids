@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Typedpost from "@/components/blog/Typedpost.astro";
+
+const blogPost = await getCollection("blog");
+---
+
+<Layout>
+  <section class="max-w-[65rem] mx-auto px-4 py-12">
+    <div class="text-center mb-10">
+      <h1 class="text-3xl font-bold">Nuestros posts</h1>
+    </div>
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
+      {blogPost.map((post) => <Typedpost post={post} />)}
+    </div>
+  </section>
+</Layout>
