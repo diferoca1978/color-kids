@@ -8,7 +8,7 @@ image: 'imageCollection/learningPlay.jpeg'
 tags: [Juego, Educación, Desarrollo]
 ---
 
-# Aprender jugando: el motor del desarrollo
+# Aprender jugando: el motor del desarrollo.
 
 
 Velit deserunt exercitation laboris est ullamco culpa. Commodo tempor mollit reprehenderit sit eiusmod exercitation laboris id pariatur magna deserunt anim labore.
