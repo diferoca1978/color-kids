@@ -1,5 +1,6 @@
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
+import { getReadingTime } from "@/utils/readingTime";
 import { getCollection, render } from "astro:content";
 
 export const getStaticPaths = async () => {
@@ -13,12 +14,20 @@ export const getStaticPaths = async () => {
 
 const { post } = Astro.props;
 const { data } = post;
+console.log("🚀 ~ data:", data);
 const { title, description, image } = data;
 const { Content } = await render(post);
+
+const readingTime = post.body ? getReadingTime(post.body) : "";
 ---
 
 <BlogLayout title={title}>
   <h1 class="text-3xl font-bold mb-5">{title}</h1>
+  <p class="mb-3 text-gray-500">
+    <strong>Tiempo de lectura: </strong>{
+      readingTime?.split(" ").slice(0, 2).join(" ")
+    }
+  </p>
   <div class="prose">
     <Content />
   </div>
