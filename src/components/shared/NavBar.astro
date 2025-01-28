@@ -11,12 +11,12 @@ import LogoBrand from "../ui/LogoBrand.astro";
       <div class="flex justify-between">
         <div>
           <!-- Website Logo -->
-          <a href="#" class="flex items-center py-4 px-2">
+          <a href="/" class="flex items-center py-4 px-2">
             <LogoBrand />
           </a>
         </div>
         <!-- Primary Navbar items -->
-        <div class="hidden gap-5 md:flex items-center">
+        <div class="hidden gap-5 md:flex md:font-medium items-center">
           <a href="/" id="link">Inicio</a>
           <a href="/servicios" id="link">Servicios</a>
           <a href="/nosotros" id="link">Nosotros</a>
@@ -72,11 +72,11 @@ import LogoBrand from "../ui/LogoBrand.astro";
   .mobile-menu {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: max-height 0.5s ease-out;
   }
   .mobile-menu.open {
     max-height: 1000px;
-    transition: max-height 0.5s ease-in;
+    transition: max-height 0.8s ease-in;
   }
 </style>
 
@@ -95,7 +95,7 @@ import LogoBrand from "../ui/LogoBrand.astro";
     });
 
     const btn = document.querySelector(
-      "button.mobile-menu-button",
+      "button.mobile-menu-button"
     ) as HTMLButtonElement;
     const menu = document.querySelector(".mobile-menu") as HTMLDivElement;
     const openIcon = document.querySelector("#open-icon") as HTMLElement;

@@ -13,6 +13,7 @@ export default {
 			colorKidsfrenchMauve: '#C461E1',
 			colorKidspearGreen: '#BFDE3A',
 			colorKidsorangeWeb: '#F3A41A',
+			colorKidWhite: '#FFFFFF',
 
 		},
 		extend: {},

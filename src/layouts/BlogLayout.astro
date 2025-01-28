@@ -17,15 +17,15 @@ const { title } = Astro.props;
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class="bg-white selection:bg-yellow-200 selection:text-neutral-700">
+  <body class="bg-white w-full min-h-screen mx-auto p-10">
     <a
-      class="font-medium text-2xl transition hover:text-colorKidsfrenchMauve duration-300 hover:underline"
+      class="transition hover:text-colorKidsorangeWeb duration-300 hover:underline hover:underline-offset-4"
       href="/blog"
     >
-      Regresar
+      Regresar al blog
     </a>
 
-    <main class="max-w-[65rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <main class="w-11/12 px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <slot />
     </main>
   </body>

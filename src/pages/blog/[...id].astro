@@ -1,6 +1,9 @@
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
+import { formatDate } from "@/utils/formatDate";
 import { getReadingTime } from "@/utils/readingTime";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
 import { getCollection, render } from "astro:content";
 
 export const getStaticPaths = async () => {
@@ -12,16 +15,20 @@ export const getStaticPaths = async () => {
   }));
 };
 
+/** Post data  */
 const { post } = Astro.props;
 const { data } = post;
-const { title, description, image } = data;
+const { title, description, pubDate } = data;
 const { Content } = await render(post);
 
 const readingTime = post.body ? getReadingTime(post.body) : "";
+
+/** Reference data */
+const author = await getEntry("author", data.author.id);
 ---
 
 <BlogLayout title={title}>
-  <h1 class="text-3xl font-bold mb-5">{title}</h1>
+  <!-- <h1 class="text-3xl font-bold mb-5">{title}</h1>
   <p class="mb-3 text-gray-500">
     <strong>Tiempo de lectura: </strong>{
       readingTime?.split(" ").slice(0, 2).join(" ")
@@ -29,5 +36,91 @@ const readingTime = post.body ? getReadingTime(post.body) : "";
   </p>
   <div class="prose">
     <Content />
+  </div> -->
+
+  <!-- Blog Article -->
+  <div class="max-w-4xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
+    <div class="max-w-xl">
+      <!-- Avatar Media -->
+      <div class="flex justify-between items-center mb-6">
+        <div class="flex w-full sm:items-center gap-x-5 sm:gap-x-3">
+          <div class="shrink-0">
+            {
+              author && (
+                <Image
+                  class="rounded-full"
+                  src={author.data.avatar}
+                  width="48"
+                  height="48"
+                  alt={author.data.name}
+                />
+              )
+            }
+          </div>
+
+          <div class="grow">
+            <div class="flex justify-between items-center gap-x-2">
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800">
+                  {author?.data.name}
+                </h3>
+                <p class="text-sm text-gray-500">{formatDate(pubDate)}</p>
+                <p class="flex items-center space-x-2 text-sm text-gray-500">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    ><rect width="16" height="16" fill="none"></rect><g
+                      fill="#000"
+                      ><path
+                        d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"
+                      ></path><path
+                        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"
+                      ></path></g
+                    ></svg
+                  >
+                  <span>
+                    {readingTime}
+                  </span>
+                </p>
+              </div>
+              <!-- Instagram Group -->
+              <div>
+                <a
+                  href="#"
+                  class="py-1.5 px-2.5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    ><rect width="24" height="24" fill="none"></rect><path
+                      fill="#000"
+                      d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"
+                    ></path></svg
+                  >
+                  Instagram
+                </a>
+              </div>
+              <!-- End Button Group -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Avatar Media -->
+
+      <!-- Content -->
+      <div class="space-y-5 md:space-y-8">
+        <h1 class="text-3xl font-bold mb-5">{title}</h1>
+        <p class="mb-3 text-gray-500">{description}</p>
+        <div class="prose">
+          <Content />
+        </div>
+        <!-- End Content -->
+      </div>
+    </div>
+    <!-- End Blog Article -->
   </div>
 </BlogLayout>

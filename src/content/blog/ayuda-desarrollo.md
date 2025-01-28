@@ -1,6 +1,6 @@
 ---
 title: Detectando señales de alerta en el desarrollo infantil.
-author: Diana Guerrero
+author: diana-guerrero
 draft: false
 pubDate: 2024-09-22
 description: Aprende a identificar los hitos del desarrollo y cuándo es necesario buscar apoyo profesional.

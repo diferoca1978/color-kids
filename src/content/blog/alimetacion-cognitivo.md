@@ -1,6 +1,6 @@
 ---
 title: La alimentación y su impacto en el desarrollo cognitivo
-author: Diana Guerrero
+author: diana-guerrero
 draft: false
 pubDate: 2024-10-05
 description: Descubre cómo los hábitos alimenticios influyen en el crecimiento mental y físico de los niños/as.

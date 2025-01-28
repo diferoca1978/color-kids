@@ -1,10 +1,10 @@
 ---
 title: ¿Cómo fomentar la independencia en los niños/as?
-author: Diana Guerrero
+author: diana-guerrero
 draft: false
 pubDate: 2024-09-15
 description: Consejos prácticos para ayudar a tus pequeños a desarrollar habilidades para una vida autónoma.
-image: 'imageCollection/independencia.webp'
+image: imageCollection/independencia.webp
 tags: [Autonomía, Desarrollo, Educación]
 ---
 
