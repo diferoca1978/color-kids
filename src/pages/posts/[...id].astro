@@ -61,9 +61,12 @@ const author = await getEntry("author", data.author.id);
           <div class="grow">
             <div class="flex justify-between items-center gap-x-2">
               <div>
-                <h3 class="text-lg font-semibold text-gray-800">
+                <a
+                  href={`/blog/${data.author.id}`}
+                  class="text-lg font-semibold text-gray-800 hover:underline"
+                >
                   {author?.data.name}
-                </h3>
+                </a>
                 <p class="text-sm text-gray-500">{formatDate(pubDate)}</p>
                 <p class="flex items-center space-x-2 text-sm text-gray-500">
                   <svg
