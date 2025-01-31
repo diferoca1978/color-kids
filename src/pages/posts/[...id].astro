@@ -17,6 +17,7 @@ export const getStaticPaths = async () => {
 
 /** Post data  */
 const { post } = Astro.props;
+
 const { data } = post;
 const { title, description, pubDate } = data;
 const { Content } = await render(post);
@@ -91,7 +92,7 @@ const author = await getEntry("author", data.author.id);
               <!-- Instagram Group -->
               <div>
                 <a
-                  href="#"
+                  href={author?.data.instagram}
                   class="py-1.5 px-2.5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
                 >
                   <svg
