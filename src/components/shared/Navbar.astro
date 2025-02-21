@@ -1,0 +1,129 @@
+---
+import { Image } from "astro:assets";
+
+import logo from "../../assets/Images/logo-512x512.png";
+---
+
+<header
+  class="sticky top-0 inset-x-0 flex flex-wrap md:flex-nonwrap z-50 w-full bg-green-50 opacity-80"
+>
+  <nav class="w-full mx-auto md:w-11/12 backdrop-blur-lg">
+    <div class="flex justify-between items-center p-5">
+      <!-- Logo -->
+      <div>
+        <a href="/">
+          <Image src={logo} alt="Logo" class="w-20 h-20" />
+        </a>
+      </div>
+      <!-- Mobile menu button -->
+      <div>
+        <button
+          type="button"
+          class="relative items-center justify-center p-2 focus:outline-0 md:hidden"
+        >
+          <span class="sr-only">Open mobile menu</span>
+
+          <!-- open menu icon -->
+          <svg
+            class="block text-gray-700 hover:text-gray-900"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            ><g
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              ><path d="M20 5h-13"></path><path d="M20 10h-10"></path><path
+                d="M20 15h-16"></path><path d="M20 20h-13"></path></g
+            ></svg
+          >
+
+          <!-- close menu icon -->
+          <svg
+            class="hidden text-gray-700 hover:text-gray-900"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            ><g
+              fill="none"
+              stroke="currentColor"
+              stroke-dasharray="16"
+              stroke-dashoffset="16"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              ><path d="M7 7l10 10" stroke-dashoffset="0"></path><path
+                d="M17 7l-10 10"
+                stroke-dashoffset="0"></path></g
+            ></svg
+          >
+        </button>
+      </div>
+      <!-- Desktop menu -->
+      <div class="hidden md:block">
+        <div class="flex space-x-4 items-center">
+          <a id="link" href="/" class="font-medium text-gray-700">Inicio</a>
+          <a id="link" href="/nosotros" class="font-medium text-gray-700"
+            >Nosotros</a
+          >
+          <a id="link" href="/servicios" class="font-medium text-gray-700"
+            >Servicios</a
+          >
+          <a id="link" href="/contacto" class="font-medium text-gray-700"
+            >Contacto</a
+          >
+          <a id="link" href="/blog" class="font-medium text-gray-700">Blog</a>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu md:hidden">
+      <div
+        class="flex flex-col items-end p-4 space-y-4 bg-green-50 absolute inset-x-0 top-25"
+      >
+        <a id="link" href="/" class="font-medium text-gray-700">Inicio</a>
+        <a id="link" href="/nosotros" class="font-medium text-gray-700"
+          >Nosotros</a
+        >
+        <a id="link" href="/servicios" class="font-medium text-gray-700"
+          >Servicios</a
+        >
+        <a id="link" href="/contacto" class="font-medium text-gray-700"
+          >Contacto</a
+        >
+        <a id="link" href="/blog" class="font-medium text-gray-700">Blog</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+  }
+
+  mobile-menu.open {
+    max-height: 100svh;
+    transition: max-height 0.8s ease-in;
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const currentPath = window.location.pathname;
+    const links = document.querySelectorAll("#link");
+    links.forEach((link) => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("text-orange-500");
+      } else {
+        link.classList.remove("text-orange-500");
+      }
+    });
+  });
+</script>
