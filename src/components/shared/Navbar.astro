@@ -5,27 +5,28 @@ import logo from "../../assets/Images/logo-512x512.png";
 ---
 
 <header
-  class="sticky top-0 inset-x-0 flex flex-wrap md:flex-nonwrap z-50 w-full bg-green-50 opacity-80"
+  class="sticky top-0 inset-x-0 flex flex-wrap md:flex-nonwrap z-50 w-full"
 >
-  <nav class="w-full mx-auto md:w-11/12 backdrop-blur-lg">
+  <nav class="w-full mx-auto md:w-10/12 backdrop-blur-lg">
     <div class="flex justify-between items-center p-5">
       <!-- Logo -->
       <div>
         <a href="/">
-          <Image src={logo} alt="Logo" class="w-20 h-20" />
+          <Image src={logo} alt="Logo" class="w-32 h-32" />
         </a>
       </div>
       <!-- Mobile menu button -->
       <div>
         <button
           type="button"
-          class="relative items-center justify-center p-2 focus:outline-0 md:hidden"
+          class="relative items-center justify-center p-2 focus:outline-0 md:hidden open-mobile-menu"
         >
           <span class="sr-only">Open mobile menu</span>
 
           <!-- open menu icon -->
           <svg
             class="block text-gray-700 hover:text-gray-900"
+            id="open-icon"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -44,6 +45,7 @@ import logo from "../../assets/Images/logo-512x512.png";
           <!-- close menu icon -->
           <svg
             class="hidden text-gray-700 hover:text-gray-900"
+            id="close-icon"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -82,9 +84,7 @@ import logo from "../../assets/Images/logo-512x512.png";
     </div>
     <!-- Mobile menu -->
     <div class="mobile-menu md:hidden">
-      <div
-        class="flex flex-col items-end p-4 space-y-4 bg-green-50 absolute inset-x-0 top-25"
-      >
+      <div class="flex flex-col items-end pr-7 space-y-4 bg-orangelight">
         <a id="link" href="/" class="font-medium text-gray-700">Inicio</a>
         <a id="link" href="/nosotros" class="font-medium text-gray-700"
           >Nosotros</a
@@ -102,20 +102,27 @@ import logo from "../../assets/Images/logo-512x512.png";
 </header>
 
 <style>
-  mobile-menu {
+  .mobile-menu {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-out;
   }
 
-  mobile-menu.open {
-    max-height: 100svh;
+  .mobile-menu.open {
+    max-height: 1000px;
     transition: max-height 0.8s ease-in;
   }
 </style>
 
 <script>
   document.addEventListener("astro:page-load", () => {
+    const btn = document.querySelector(
+      "button.open-mobile-menu"
+    ) as HTMLButtonElement;
+    const menu = document.querySelector(".mobile-menu") as HTMLDivElement;
+    const openIcon = document.querySelector("#open-icon") as HTMLElement;
+    const closeIcon = document.querySelector("#close-icon") as HTMLElement;
+
     const currentPath = window.location.pathname;
     const links = document.querySelectorAll("#link");
     links.forEach((link) => {
@@ -124,6 +131,12 @@ import logo from "../../assets/Images/logo-512x512.png";
       } else {
         link.classList.remove("text-orange-500");
       }
+    });
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("open");
+      openIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
     });
   });
 </script>
