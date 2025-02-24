@@ -1,9 +1,69 @@
 @import "tailwindcss";
 
+@layer components {
+  .btn-primary {
+      @apply bg-gradient-to-r from-orangeDark to-orangeMain
+       hover:from-orangeMain
+       hover:to-orangeDark
+         hover:outline-1
+       hover:outline-slate-400
+         px-4 py-2 rounded-xl
+       text-slate-100 font-semibold text-lg
+         shadow-md transition duration-400 ease-in-out
+         transform hover:scale-105
+  }
+
+  .btn-secondary {
+    @apply bg-gradient-to-r from-blueDark to-blueMain
+      hover:from-blueMain
+      hover:to-blueDark
+        hover:outline-1
+      hover:outline-slate-400
+        px-4 py-2 rounded-xl
+      text-slate-100 font-semibold text-lg
+        shadow-md transition duration-400 ease-in-out
+        transform hover:scale-105
+  }
+
+  .btn-tertiary {
+    @apply bg-gradient-to-r from-fuchsiaDark to-fuchsiaMain
+      hover:from-fuchsiaMain
+      hover:to-fuchsiaDark focus:outline-1
+        px-4 py-2 rounded-xl
+      text-slate-100 font-semibold text-lg
+        shadow-md transition duration-400 ease-in-out
+        transform hover:scale-105
+  }
+}
+
 
 @theme {
-  --color-blueMain: #CBEEF2;
-  --color-blueLigth: #87E8F2;
-  --color-orangeMain: #F1A619;
-  --color-orangelight: #fef6e8
+  --color-orangeLighter: oklch(97.56% 0.0204 81.78);
+  --color-orangeLight: oklch(92.48% 0.0617 82.09);
+  --color-orangeMain: oklch(77.8% 0.159 74.2);
+  --color-orangeDark: oklch(60.46% 0.1225 74.62);
+
+  --color-yelowLight: oklch(98.37% 0.0267 95.33);
+  --color-yelowLighter: oklch(98.96% 0.0186 96.86);
+  --color-yelowMain: oklch(67.7% 0.026 259.8);
+  --color-yelowDark: oklch(73.04% 0.1217 95.69);
+
+  --color-fuchsiaLighter: oklch(96.13% 0.025 341.82);
+  --color-fuchsiaLight: oklch(94.13% 0.0386 341.8);
+  --color-fuchsiaMain: oklch(68.3% 0.247 348.5);
+  --color-fuchsiaDark: oklch(55.3% 0.1972 348.14);
+
+  --color-blueLighter: oklch(98.69% 0.0106 204.13);
+  --color-blueLight: oklch(95.64% 0.0307 206.71);
+  --color-blueMain: oklch(87.1% 0.091 206.2);
+  --color-blueDark: oklch(81.08% 0.0838 206.29);
+
+  --color-greenLighter: oklch(97.58% 0.02 115.95);
+  --color-greenLight: oklch(92.44% 0.0623 116.44);
+  --color-greenMain: oklch(76.4% 0.168 120.1);
+  --color-greenDark: oklch(71.32% 0.157 120.26);
+
+
+
+
 }
