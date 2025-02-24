@@ -1,3 +1,13 @@
+@font-face {
+  font-family: poppins;
+  src: url("../assets/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: manrope;
+  src: url("../assets/fonts/Manrope-VariableFont_wght.ttf");
+}
+
 @import "tailwindcss";
 
 @layer components {
@@ -38,6 +48,10 @@
 
 
 @theme {
+  --font-poppins: poppins, "sans-serif";
+  --font-manrope: manrope, "sans-serif";
+
+
   --color-orangeLighter: oklch(97.56% 0.0204 81.78);
   --color-orangeLight: oklch(92.48% 0.0617 82.09);
   --color-orangeMain: oklch(77.8% 0.159 74.2);
