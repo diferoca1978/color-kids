@@ -1,0 +1,30 @@
+---
+import BlogCard from "../cards/blogCard.astro";
+import { getCollection } from "astro:content";
+
+const { count = 3 } = Astro.props;
+
+const blogPosts = await getCollection("blog");
+
+const recentPosts = blogPosts
+  .sort(
+    (a, b) =>
+      new Date(a.data.pubDate).getTime() - new Date(b.data.pubDate).getTime()
+  )
+  .slice(0, count);
+---
+
+<section class="mx-auto">
+  <div class="container max-w-10/12 mx-auto px-4">
+    <div>
+      <h1 class="mb-12 text-4xl text-[min(10vw,60px)] font-bold">
+        Nuestros servicios
+      </h1>
+
+      <!-- Blog-posts-grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {recentPosts.map((post) => <BlogCard post={post} />)}
+      </div>
+    </div>
+  </div>
+</section>
