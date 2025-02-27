@@ -1,0 +1,106 @@
+---
+import Prose from "@/components/Prose.astro";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import { formatDate } from "@/utils/formatDate";
+import { getReadingTime } from "@/utils/readingTime";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import { getCollection, render } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+};
+
+/** Post data  */
+const { post } = Astro.props;
+
+const { data } = post;
+const { title, description, image, pubDate } = data;
+const { Content } = await render(post);
+
+const readingTime = post.body ? getReadingTime(post.body) : "";
+
+/** Reference data */
+const author = await getEntry("author", data.author.id);
+---
+
+<BlogLayout title={title}>
+  <!-- Blog Article -->
+  <article class="container mx-auto px-4 py-8 md:py-16">
+    <div class="max-w-2xl px-4 pt-6 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
+      <!-- Post-header -->
+      <div class="flex flex-wrap justify-between items-center max-w-2xl mb-10">
+        <div class="flex items-center">
+          {
+            author && (
+              <Image
+                src={author.data.avatar}
+                alt={author.data.name}
+                class="shrink-0 rounded-full border-2 mr-4"
+                width="52"
+                height="52"
+              />
+            )
+          }
+          <div>
+            {author && <p>{author.data.name}</p>}
+            <p>{formatDate(pubDate)}</p>
+            <p class="flex">
+              <svg
+                class="mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                ><rect width="24" height="24" fill="none"></rect><path
+                  fill="currentColor"
+                  d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2M12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8"
+                ></path><path
+                  fill="currentColor"
+                  d="M12.5 7H11v6l5.25 3.15l.75-1.23l-4.5-2.67z"></path></svg
+              >{readingTime}
+            </p>
+          </div>
+        </div>
+        <div>
+          <a href={author?.data.instagram}>
+            <button
+              type="button"
+              class="px-2 py-2 border border-slate-900 rounded-xl shadow-2xs transition hover:shadow-2xl duration-300"
+            >
+              <svg
+                class="shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                ><rect width="24" height="24" fill="none"></rect><path
+                  fill="currentColor"
+                  d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"
+                ></path></svg
+              >
+            </button>
+          </a>
+        </div>
+      </div>
+      <!-- End-Post-header -->
+
+      <!-- Content -->
+      <div class="max-w-2xl space-y-5 md:space-y-8">
+        <h1 class="font-bold mb-5">{title}</h1>
+        <p class="mb-3 text-slate-500">{description}</p>
+
+        <Prose>
+          <Content />
+        </Prose>
+
+        <!-- End Content -->
+      </div>
+    </div>
+  </article>
+</BlogLayout>

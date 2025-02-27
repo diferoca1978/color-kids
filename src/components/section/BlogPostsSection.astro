@@ -1,6 +1,6 @@
 ---
-import BlogCard from "../cards/blogCard.astro";
 import { getCollection } from "astro:content";
+import TypedPostCard from "../cards/TypedPostCard.astro";
 
 const { count = 3 } = Astro.props;
 
@@ -14,16 +14,16 @@ const recentPosts = blogPosts
   .slice(0, count);
 ---
 
-<section class="mx-auto">
+<section class="mx-auto py-20">
   <div class="container max-w-10/12 mx-auto px-4">
     <div>
-      <h1 class="mb-12 text-4xl text-[min(10vw,60px)] font-bold">
-        Nuestros servicios
+      <h1 class="mb-12 text-4xl text-slate-900 text-[min(10vw,60px)] font-bold">
+        Nuestros posts mas recientes
       </h1>
 
       <!-- Blog-posts-grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {recentPosts.map((post) => <BlogCard post={post} />)}
+        {recentPosts.map((post) => <TypedPostCard post={post} />)}
       </div>
     </div>
   </div>

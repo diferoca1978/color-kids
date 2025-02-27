@@ -8,10 +8,10 @@ image: imageCollection/learningPlay.jpeg
 tags: [Juego, Educación, Desarrollo]
 ---
 
-
 Velit deserunt exercitation laboris est ullamco culpa. Commodo tempor mollit reprehenderit sit eiusmod exercitation laboris id pariatur magna deserunt anim labore.
 
 ## Aprender jugando: el motor del desarrollo.
+
 Mollit deserunt do non deserunt elit ad occaecat. Laborum occaecat nisi ea ex adipisicing dolore et officia. Elit magna in nulla ut id aliquip incididunt nulla officia. Ullamco velit cupidatat esse cillum proident exercitation do deserunt. Cupidatat minim consequat tempor pariatur incididunt aliquip laboris aute velit ipsum.
 
 ![alt text](imageCollection/learningPlay.jpeg)

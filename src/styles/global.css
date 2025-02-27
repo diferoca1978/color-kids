@@ -9,6 +9,7 @@
 }
 
 @import "tailwindcss";
+@plugin '@tailwindcss/typography';
 
 @layer base {
   h1 {
@@ -33,15 +34,7 @@
 
 @layer components {
   .btn-primary {
-      @apply bg-gradient-to-r from-orangeDark to-orangeMain
-       hover:from-orangeMain
-       hover:to-orangeDark
-         hover:outline-1
-       hover:outline-slate-400
-         px-4 py-2 rounded-xl
-       text-slate-100 font-semibold
-         shadow-md transition duration-400 ease-in-out
-         transform hover:scale-105
+      @apply px-8 py-3 bg-gradient-to-r from-sky-600 to-sky-400 text-slate-100 font-medium rounded-lg hover:from-sky-400 hover:to-sky-600 transition duration-400 text-center shadow-lg shadow-blue-500/20
   }
 
   .btn-secondary {
@@ -69,8 +62,7 @@
 
 
 @theme {
-  --font-poppins: poppins, "sans-serif";
-  --font-manrope: manrope, "sans-serif";
+  
 
 
   --color-orangeLighter: oklch(97.56% 0.0204 81.78);
@@ -97,8 +89,5 @@
   --color-greenLight: oklch(92.44% 0.0623 116.44);
   --color-greenMain: oklch(76.4% 0.168 120.1);
   --color-greenDark: oklch(71.32% 0.157 120.26);
-
-
-
 
 }
