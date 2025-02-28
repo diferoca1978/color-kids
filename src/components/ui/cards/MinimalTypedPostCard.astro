@@ -1,0 +1,32 @@
+---
+import { formatDate } from "@/utils/formatDate";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+
+const { data, id } = post;
+
+const { title, description, image, pubDate } = data;
+---
+
+<a
+  class="group flex flex-col h-full rounded-xl focus:outline-none"
+  href=`/blog/${id}`
+>
+  <h3 class="flex-grow font-manrope text-lg font-medium text-slate-800">
+    {title}
+  </h3>
+  <p class="mt-1 font-manrope text-slate-600">{formatDate(pubDate)}</p>
+  <div class="shrink-0">
+    <Image
+      src={image}
+      alt={title}
+      class="rounded-xl w-full h-48 object-cover"
+    />
+  </div>
+</a>

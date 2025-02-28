@@ -17,18 +17,13 @@
     font-size: var(--text-2xl);
   }
 
-  a {
-    font-family: manrope, "sans-serif";
+  h2 {
+    font-family: poppins, "sans-serif";
+    font-size: var(--text-lg);
   }
 
-  p {
+  a {
     font-family: manrope, "sans-serif";
-  }
-  
-  h2 {
-    font-family: manrope, "sans-serif";
-    font-size: var(--text-lg);
-    font-weight: var(--font-medium);
   }
 }
 
@@ -62,7 +57,9 @@
 
 
 @theme {
-  
+
+  --font-manrope: marope, sans-serif;
+  --font-poppins: poppins, sans-serif;
 
 
   --color-orangeLighter: oklch(97.56% 0.0204 81.78);

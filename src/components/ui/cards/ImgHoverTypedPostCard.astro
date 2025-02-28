@@ -1,0 +1,56 @@
+---
+import { getReadingTime } from "@/utils/readingTime";
+import { Image } from "astro:assets";
+
+import type { CollectionEntry } from "astro:content";
+
+import { getEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+
+const { data, id } = post;
+
+const { title, description, image, pubDate } = data;
+
+const readingTime = post.body ? getReadingTime(post.body) : "";
+
+// Referenced data
+const author = await getEntry("author", data.author.id);
+---
+
+<a
+  href=`/blog/${id}`
+  class="group relative block max-h-80 bg-slate-900 rounded-bl-3xl rounded-tr-3xl overflow-hidden"
+>
+  <Image
+    src={image}
+    alt={title}
+    class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+  />
+
+  <div class="relative p-4 sm:p-6 lg:p-8">
+    <p
+      class="font-manrope text-sm font-medium uppercase tracking-widest text-blueLighter"
+    >
+      {author?.data.subtitle}
+    </p>
+
+    <p class="font-manrope text-[min(5vw,18px)] font-bold text-slate-50">
+      {author?.data.name}
+    </p>
+
+    <div class="mt-32 sm:mt-28 lg:mt-20">
+      <div
+        class="translate-y-8 transform opacity-0 transition-all duration-300 ease-in-out group-hover:translate-y-0 group-hover:opacity-100"
+      >
+        <p class="font-manrope text[min(5vw,16px)] text-slate-50">
+          {description}
+        </p>
+      </div>
+    </div>
+  </div>
+</a>

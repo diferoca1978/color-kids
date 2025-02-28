@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
+import Navbar from "@/components/shared/Navbar.astro";
 
 interface Props {
   title: string;
@@ -23,10 +24,8 @@ const { title } = Astro.props;
     <ClientRouter />
   </head>
 
-  <body class="w-full mx-auto min-h-screen p-5 md:p-10">
-    <a href="/blog">
-      <button class="btn-primary"> Regresar al blog </button>
-    </a>
+  <body class="w-full mx-auto min-h-screen pb-10 px-5 md:pb-16 md:px-8">
+    <Navbar />
     <main class="">
       <slot />
     </main>

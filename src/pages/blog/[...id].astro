@@ -49,8 +49,8 @@ const author = await getEntry("author", data.author.id);
           }
           <div>
             {author && <p>{author.data.name}</p>}
-            <p>{formatDate(pubDate)}</p>
-            <p class="flex">
+            <p class="font-manrope">{formatDate(pubDate)}</p>
+            <p class="flex font-manrope">
               <svg
                 class="mr-2"
                 xmlns="http://www.w3.org/2000/svg"
@@ -92,8 +92,10 @@ const author = await getEntry("author", data.author.id);
 
       <!-- Content -->
       <div class="max-w-2xl space-y-5 md:space-y-8">
-        <h1 class="font-bold mb-5">{title}</h1>
-        <p class="mb-3 text-slate-500">{description}</p>
+        <h1 class="font-bold mb-5 text-[min(6.5vw,36px)]">{title}</h1>
+        <p class="font-manrope mb-5 text-slate-600 text-[min(5vw,20px)]">
+          {description}
+        </p>
 
         <Prose>
           <Content />
