@@ -1,8 +1,9 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import Navbar from "../components/shared/Navbar.astro";
+
 import "../styles/global.css";
-import Footer from "../components/shared/Footer.astro";
+import Footer from "@/components/shared/Footer.astro";
+import Navbar from "@/components/shared/Navbar.astro";
 
 interface Props {
   title: string;
@@ -12,7 +13,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es.COL">
+<html lang="es-COL" class="scrollbar-hide lenis lenis-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -22,6 +23,11 @@ const { title } = Astro.props;
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <script type="module">
+      import "/src/scripts/lenisSmooth.js";
+    </script>
+
     <ClientRouter />
   </head>
 
@@ -31,7 +37,17 @@ const { title } = Astro.props;
     <main>
       <slot />
     </main>
-  </body>
+    <Footer />
+    <style>
+      /* CSS rules for the page scrollbar */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
 
-  <Footer />
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </body>
 </html>
