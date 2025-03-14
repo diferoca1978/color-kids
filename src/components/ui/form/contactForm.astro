@@ -3,49 +3,79 @@
 ---
 
 <div>
-  <form action="#">
-    <div>
-      <label for="nombre"> Nombre </label>
-      <input type="text" placeholder="Nombre" id="fullName" name="fullName" />
+  <form action="#" class="space-y-6">
+    <div class="relative">
+      <input
+        type="text"
+        placeholder="Nombre"
+        id="fullName"
+        name="fullName"
+        class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
+      />
+      <label
+        for="nombre"
+        class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
+      >
+        Nombre
+      </label>
     </div>
 
-    <div>
-      <label for="email"> E-mail </label>
+    <div class="relative">
       <input
         type="text"
         placeholder="email@ejemplo.com"
         id="email"
         name="email"
+        class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
       />
+      <label
+        for="email"
+        class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
+      >
+        E-mail
+      </label>
     </div>
 
-    <div>
-      <label for="telefono"> Telefono </label>
+    <div class="relative">
       <input
         type="tel"
         placeholder="+57 xxx-xxx-xxxx"
         id="telefono"
         name="telefono"
+        class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
       />
+      <label
+        for="telefono"
+        class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
+      >
+        Telefono
+      </label>
     </div>
 
-    <div>
-      <label for="inquietudes"> Inquietudes </label>
-      <input
-        type="text"
+    <div class="relative">
+      <textarea
         placeholder="Inquietudes"
         id="inquietudes"
         name="inquietudes"
-      />
+        class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
+      ></textarea>
+      <label
+        for="inquietudes"
+        class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
+      >
+        Inquietudes
+      </label>
     </div>
 
-    <div>
+    <div class="relative">
       <label>
         <input type="checkbox" id="terms" name="terms" />
         Aceptar terminos y condiciones
       </label>
     </div>
 
-    <button class="btn-primary">Enviar</button>
+    <button type="button" class="btn-primary">Enviar</button>
   </form>
 </div>
+
+<style></style>

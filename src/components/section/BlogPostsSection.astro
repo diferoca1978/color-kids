@@ -20,17 +20,55 @@ const recentPosts = blogPosts
 <section class="mx-auto py-20">
   <div class="container max-w-10/12 mx-auto px-4">
     <h1
-      class="mb-12 tracking-tight text-4xl text-slate-900 text-[min(10vw,60px)] font-bold"
+      class="mb-12 tracking-tight text-4xl text-slate-900 text-[min(10vw,60px)] font-bold title"
     >
       Nuestros posts mas recientes
     </h1>
 
     <!-- Blog-posts-grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 posts">
       {recentPosts.map((post) => <ImgHoverTypedPostCard post={post} />)}
     </div>
     <div class="mt-10">
-      <ContactBanner />
+      <!-- <ContactBanner /> -->
     </div>
   </div>
 </section>
+
+<style>
+  .title {
+    animation: reveal-title linear both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 30%;
+  }
+
+  .posts {
+    animation: reveal-cards ease-in both;
+    animation-timeline: view(block);
+    animation-range: entry 0% cover 30%;
+  }
+
+  @keyframes reveal-title {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(80px);
+    }
+  }
+
+  @keyframes reveal-cards {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.6;
+      transform: translateY(80px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+</style>
