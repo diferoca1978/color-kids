@@ -1,0 +1,61 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout title="404">
+  <section class="page_404">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="col-sm-10 col-sm-offset-1 text-center">
+            <div class="four_zero_four_bg">
+              <h1
+                class="text-center text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orangeMain to-fuchsiaDark"
+              >
+                404
+              </h1>
+            </div>
+
+            <div class="contant_box_404 space-y-4">
+              <h2 class="h3">Parece estas perdido</h2>
+
+              <p class="font-manrope">
+                La pagina que buscas no esta disponible!
+              </p>
+
+              <button
+                class="btn-tertiary"
+                type="button"
+                onclick="history.back()"
+              >
+                <a href="" class="link_404">Regresar</a>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .page_404 {
+      padding: 40px 0;
+      background: #fff;
+      font-family: "Arvo", serif;
+    }
+
+    .page_404 img {
+      width: 100%;
+    }
+
+    .four_zero_four_bg {
+      background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+      height: 400px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .contant_box_404 {
+      margin-top: -50px;
+    }
+  </style>
+</MainLayout>
