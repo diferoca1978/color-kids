@@ -1,11 +1,9 @@
 ---
-import { actions } from "astro:actions";
 
-const result = Astro.getActionResult(actions.getContact);
 ---
 
 <div>
-  <form method="POST" action={actions.getContact} class="space-y-6">
+  <form class="space-y-6 contact-form">
     <div class="relative">
       <input
         transition:persist
@@ -17,11 +15,8 @@ const result = Astro.getActionResult(actions.getContact);
         aria-describedby="fullName-error"
         class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
       />
-      {
-        result?.error?.fields?.fullName && (
-          <p class="text-red-500">{result?.error?.fields?.fullName[0]}</p>
-        )
-      }
+      <p id="error_fullName" class="text-red-500"></p>
+
       <label
         for="fullName"
         class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
@@ -41,11 +36,8 @@ const result = Astro.getActionResult(actions.getContact);
         aria-describedby="email-error"
         class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
       />
-      {
-        result?.error?.fields?.email && (
-          <p class="text-red-500">{result?.error?.fields?.email[0]}</p>
-        )
-      }
+      <p id="error_email" class="text-red-500"></p>
+
       <label
         for="email"
         class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
@@ -65,11 +57,7 @@ const result = Astro.getActionResult(actions.getContact);
         aria-describedby="telefono-error"
         class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
       />
-      {
-        result?.error?.fields?.telefono && (
-          <p class="text-red-500">{result?.error?.fields?.telefono[0]}</p>
-        )
-      }
+
       <label
         for="telefono"
         class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
@@ -90,11 +78,7 @@ const result = Astro.getActionResult(actions.getContact);
         aria-describedby="inquietudes-error"
         class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
       ></textarea>
-      {
-        result?.error?.fields?.inquietudes && (
-          <p class="text-red-500">{result?.error?.fields?.inquietudes[0]}</p>
-        )
-      }
+      <p id="error_inquietudes" class="text-red-500"></p>
       <label
         for="inquietudes"
         class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
@@ -104,22 +88,81 @@ const result = Astro.getActionResult(actions.getContact);
     </div>
 
     <div class="relative">
-      <label>
+      <label for="terms">
         <input
           type="checkbox"
           id="terms"
           name="terms"
+          value="true"
           aria-describedby="terms-error"
         />
         Aceptar terminos y condiciones
       </label>
-      {
-        result?.error?.fields?.terms && (
-          <p class="text-red-500">{result?.error?.fields?.terms[0]}</p>
-        )
-      }
+      <p id="error_terms" class="text-red-500"></p>
     </div>
 
-    <button type="submit" class="btn-primary">Enviar</button>
+    <button type="submit" class="btn-primary btn-submit">Enviar</button>
+    <div
+      id="form-success"
+      class="hidden bg-gradient-to-tl from-lime-600 to-lime-400 p-4 rounded-2xl"
+    >
+      <p class="font-manrope text-slate-50 font-semibold text-center">
+        ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.
+      </p>
+    </div>
   </form>
 </div>
+
+<script>
+  import { actions } from "astro:actions";
+  import { isInputError } from "astro:actions";
+
+  const form = document.querySelector(".contact-form") as HTMLFormElement;
+  const formSuccess = document.getElementById("form-success") as HTMLDivElement;
+  const btnSubmit = document.querySelector(".btn-submit") as HTMLButtonElement;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Clear all error messages first
+    const errorElements = document.querySelectorAll('[id^="error_"]');
+    errorElements.forEach((el) => {
+      if (el instanceof HTMLElement) {
+        el.textContent = "";
+      }
+    });
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    console.log(data);
+
+    btnSubmit.setAttribute("disabled", "disabled");
+
+    const { error } = await actions.getContact(formData);
+    console.log(error);
+    try {
+      if (error && isInputError(error)) {
+        console.log(error.fields);
+        Object.entries(error.fields).forEach(([label, messages]) => {
+          (
+            document.querySelector(`#error_${label}`) as HTMLParagraphElement
+          ).textContent = messages[0];
+        });
+        btnSubmit.removeAttribute("disabled");
+        btnSubmit.textContent = "Enviar";
+      } else {
+        // Success! Clear the form and show success message
+        form.reset();
+        formSuccess.classList.remove("hidden");
+        setTimeout(() => {
+          formSuccess.classList.add("hidden");
+        }, 5000);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      btnSubmit.removeAttribute("disabled");
+      btnSubmit.textContent = "Enviar";
+    }
+  });
+</script>
