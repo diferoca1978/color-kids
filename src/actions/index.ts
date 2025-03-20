@@ -1,7 +1,7 @@
-import { getContac } from "./contact/getContact";
+import { getContact } from './contact/getContact';
 
 
 
 export const server = {
-  getContac,
+  getContact
 }

@@ -1,19 +1,29 @@
 ---
+import { actions } from "astro:actions";
 
+const result = Astro.getActionResult(actions.getContact);
 ---
 
 <div>
-  <form action="#" class="space-y-6">
+  <form method="POST" action={actions.getContact} class="space-y-6">
     <div class="relative">
       <input
+        transition:persist
         type="text"
         placeholder="Nombre"
         id="fullName"
         name="fullName"
+        required
+        aria-describedby="fullName-error"
         class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
       />
+      {
+        result?.error?.fields?.fullName && (
+          <p class="text-red-500">{result?.error?.fields?.fullName[0]}</p>
+        )
+      }
       <label
-        for="nombre"
+        for="fullName"
         class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
       >
         Nombre
@@ -22,12 +32,20 @@
 
     <div class="relative">
       <input
-        type="text"
+        transition:persist
+        type="email"
         placeholder="email@ejemplo.com"
         id="email"
         name="email"
+        required
+        aria-describedby="email-error"
         class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
       />
+      {
+        result?.error?.fields?.email && (
+          <p class="text-red-500">{result?.error?.fields?.email[0]}</p>
+        )
+      }
       <label
         for="email"
         class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
@@ -38,12 +56,20 @@
 
     <div class="relative">
       <input
+        transition:persist
         type="tel"
         placeholder="+57 xxx-xxx-xxxx"
         id="telefono"
         name="telefono"
+        required
+        aria-describedby="telefono-error"
         class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
       />
+      {
+        result?.error?.fields?.telefono && (
+          <p class="text-red-500">{result?.error?.fields?.telefono[0]}</p>
+        )
+      }
       <label
         for="telefono"
         class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
@@ -54,13 +80,21 @@
 
     <div class="relative">
       <textarea
+        transition:persist
         cols="30"
         rows="5"
         placeholder="Inquietudes"
         id="inquietudes"
         name="inquietudes"
+        required
+        aria-describedby="inquietudes-error"
         class="peer font-manrope h-10 w-full border-b-2 border-slate-300 text-slate-800 bg-transparent placeholder-transparent focus:outline-none focus:border-fuchsiaMain"
       ></textarea>
+      {
+        result?.error?.fields?.inquietudes && (
+          <p class="text-red-500">{result?.error?.fields?.inquietudes[0]}</p>
+        )
+      }
       <label
         for="inquietudes"
         class="absolute font-manrope left-0 -top-3.5 text-slate-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-fuchsiaDark peer-focus:text-sm"
@@ -71,11 +105,21 @@
 
     <div class="relative">
       <label>
-        <input type="checkbox" id="terms" name="terms" />
+        <input
+          type="checkbox"
+          id="terms"
+          name="terms"
+          aria-describedby="terms-error"
+        />
         Aceptar terminos y condiciones
       </label>
+      {
+        result?.error?.fields?.terms && (
+          <p class="text-red-500">{result?.error?.fields?.terms[0]}</p>
+        )
+      }
     </div>
 
-    <button type="button" class="btn-primary">Enviar</button>
+    <button type="submit" class="btn-primary">Enviar</button>
   </form>
 </div>
