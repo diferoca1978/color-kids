@@ -1,9 +1,13 @@
 ---
-
+import { actions } from "astro:actions";
 ---
 
 <div>
-  <form class="space-y-6 contact-form">
+  <form
+    action={actions.getContact}
+    class="space-y-6 contact-form"
+    method="POST"
+  >
     <div class="relative">
       <input
         transition:persist

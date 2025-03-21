@@ -1,6 +1,8 @@
-import { defineAction } from 'astro:actions';
+import { defineAction, ActionError } from 'astro:actions';
 import { z } from 'astro:schema';
+import { Resend } from 'resend';
 
+const resend = new Resend(import.meta.env.RESEND_API_KEY)
 
 export const getContact = defineAction({
   accept: 'form',
@@ -13,8 +15,28 @@ export const getContact = defineAction({
       message: 'Debes aceptar los términos y condiciones' 
     })
   }),
-  handler: async ({fullName, email, telefono, inquietudes, terms}) => {
-    console.log({fullName,email,telefono,inquietudes, terms})
-    return { ok: true }
+  handler: async ({fullName, email, telefono, inquietudes}) => {
+
+    
+    const { data, error } = await resend.emails.send({
+      from: 'Color Kids <color-kids@resend.dev>',
+      to: [email],
+      subject: 'New contact form submission',
+      html:   `<h1>Form submission it works!!</h1>
+      <p>Nombre: ${fullName}</p>
+      <p>Email: ${email}</p>
+      <p>Telefono: ${telefono}</p>
+      <p>Inquietudes: ${inquietudes}</p>`
+
+    })
+
+    if (error) {
+      throw new ActionError({
+        code: 'EMAIL_ERROR',
+        message: error.message
+      });
+      
+    }
+    return { ok: true, data }
   }
 })
