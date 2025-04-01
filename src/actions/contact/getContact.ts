@@ -32,7 +32,7 @@ export const getContact = defineAction({
 
     if (error) {
       throw new ActionError({
-        code: 'EMAIL_ERROR',
+        code: 'INTERNAL_SERVER_ERROR',
         message: error.message
       });
       

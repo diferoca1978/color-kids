@@ -1,7 +1,88 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import TEAM from "@/assets/Images/TEAM.png";
 ---
 
 <MainLayout title="Nosotros">
-  <h1>nosotros</h1>
+  <div class="container mx-auto">
+    <!-- Banner section -->
+    <div
+      class="relative bg-gradient-to-br from-blueDark via-slate-300 to-blueMain overflow-hidden rounded-md mb-10"
+    >
+      <!-- Decorative wave -->
+      <div class="absolute top-0 right-0 left-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"
+          ><path
+            fill="#ffffff"
+            fill-opacity="1"
+            d="M0,32L80,32C160,32,320,32,480,42.7C640,53,800,75,960,69.3C1120,64,1280,32,1360,16L1440,0L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
+            style=""></path></svg
+        >
+      </div>
+      <!-- Text -->
+      <div class="flex flex-col items-start py-18 px-5 md:py-24 md:pl-20">
+        <h1
+          class="mb-10 tracking-tight text-4xl text-slate-100 text-[min(10vw,60px)] font-bold sm:text-start title"
+        >
+          Conocenos
+        </h1>
+        <p class="prose font-manrope text-balance">
+          En color kids, ofrecemos servicios de estimulación infantil, con el
+          fin de ayudar exitosamente a los niños/ñas y sus familias en el
+          desarrollo social, emocional, físico y cognitivo.
+        </p>
+        <!-- Buttons  -->
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+          <a href="/servicios" class="btn-primary"> Nuestros servicios </a>
+          <a href="/contacto" class="btn-primary"> Contactanos </a>
+        </div>
+      </div>
+      <!-- Decorative wave -->
+      <div class="absolute bottom-0 left-0 right-0">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          class="h-16 w-full fill-white"
+        >
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C57.66,118.92,158.23,95.92,227.98,80.14c69.23-15.59,140.36-29.2,218.27-35.46C475.98,41.56,505,40.31,535.1,40.32c72.87-1.61,138.02,1.61,186.29,16.12Z"
+          ></path>
+        </svg>
+      </div>
+    </div>
+    <!-- History section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Left column: Content -->
+      <div class="flex flex-col max-w-2xl ml-5">
+        <h1
+          class="text-4xl text-[min(10vw,60px)] font-bold text-slate-900 leading-tight mb-5"
+        >
+          Nuestra historia
+        </h1>
+        <h2 class="mb-5">
+          Impulsados por la necesidad de ayudar a los niños/ñas que enfrentan
+          desafíos en su desarrollo.
+        </h2>
+        <p class="prose font-manrope text-balance">
+          En 2019, nacio el sueño de crear un espacio especializado en terapia
+          ocupacional infantil con enfoque verdaderamente inclusivo. Lo que
+          comenzó como un pequeño consultorio, se transformó gradualmente en un
+          centro de referencia gracias a su metodología innovadora que integra
+          técnicas terapéuticas tradicionales con tecnologías adaptativas.
+          <span>
+            A través de estos cinco años, hemos crecido y nos hemos
+            especializado en el desarrollo de habilidades motoras finas y
+            gruesas, el procesamiento sensorial y la independencia diaria.
+            Pudiendo ayudar exitosamente a mas de 200 niños/ñas y sus familias.
+          </span>
+        </p>
+      </div>
+      <!-- Right column: Image -->
+      <div class="relative w-full">
+        <Image src={TEAM} alt="Hero Image" class="w-full" />
+      </div>
+    </div>
+  </div>
 </MainLayout>
