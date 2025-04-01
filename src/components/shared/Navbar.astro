@@ -115,28 +115,26 @@ import logo from "../../assets/Images/logo-512x512.png";
 </style>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const btn = document.querySelector(
-      "button.open-mobile-menu",
-    ) as HTMLButtonElement;
-    const menu = document.querySelector(".mobile-menu") as HTMLDivElement;
-    const openIcon = document.querySelector("#open-icon") as HTMLElement;
-    const closeIcon = document.querySelector("#close-icon") as HTMLElement;
+  const btn = document.querySelector(
+    "button.open-mobile-menu",
+  ) as HTMLButtonElement;
+  const menu = document.querySelector(".mobile-menu") as HTMLDivElement;
+  const openIcon = document.querySelector("#open-icon") as HTMLElement;
+  const closeIcon = document.querySelector("#close-icon") as HTMLElement;
 
-    const currentPath = window.location.pathname;
-    const links = document.querySelectorAll("#link");
-    links.forEach((link) => {
-      if (link.getAttribute("href") === currentPath) {
-        link.classList.add("text-orangeMain");
-      } else {
-        link.classList.remove("text-orangeMain");
-      }
-    });
+  const currentPath = window.location.pathname;
+  const links = document.querySelectorAll("#link");
+  links.forEach((link) => {
+    if (link.getAttribute("href") === currentPath) {
+      link.classList.add("text-orangeMain");
+    } else {
+      link.classList.remove("text-orangeMain");
+    }
+  });
 
-    btn.addEventListener("click", () => {
-      menu.classList.toggle("open");
-      openIcon.classList.toggle("hidden");
-      closeIcon.classList.toggle("hidden");
-    });
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("open");
+    openIcon.classList.toggle("hidden");
+    closeIcon.classList.toggle("hidden");
   });
 </script>
