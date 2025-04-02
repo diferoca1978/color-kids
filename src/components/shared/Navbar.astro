@@ -5,9 +5,9 @@ import logo from "../../assets/Images/logo-512x512.png";
 ---
 
 <header
-  class="sticky top-0 inset-x-0 flex flex-wrap md:flex-nonwrap z-50 w-full backdrop-blur-3xl"
+  class="sticky top-0 inset-x-0 flex flex-wrap md:flex-nonwrap z-50 w-full backdrop-blur-3xl main-header"
 >
-  <nav class="w-full mx-auto md:w-9/12">
+  <nav class="w-full mx-auto md:w-9/12 nav-bar">
     <div class="flex justify-between items-center p-5">
       <!-- Logo -->
       <div>
@@ -100,18 +100,24 @@ import logo from "../../assets/Images/logo-512x512.png";
     transition: max-height 0.8s ease-in;
   }
 
-  .image {
+  /* .image-resize {
+    width: 78px;
+    height: 78px;
+    transition: ease 0.5s;
+  } */
+
+  /* .image {
     animation: enhance-navbar linear both;
     animation-timeline: scroll(root block);
     animation-range: 0 200px;
-  }
+  } */
 
-  @keyframes enhance-navbar {
+  /* @keyframes enhance-navbar {
     to {
       width: 78px;
       height: 78px;
     }
-  }
+  } */
 </style>
 
 <script>
@@ -136,5 +142,35 @@ import logo from "../../assets/Images/logo-512x512.png";
     menu.classList.toggle("open");
     openIcon.classList.toggle("hidden");
     closeIcon.classList.toggle("hidden");
+  });
+</script>
+
+<script>
+  import { gsap } from "gsap";
+
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  ScrollTrigger.create({
+    markers: true,
+    start: "top -80",
+    end: "top 110px",
+    onEnter: () => {
+      gsap.to(".image", {
+        height: "80px",
+        width: "80px",
+        duration: 0.5,
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(".image", {
+        height: "128px",
+        width: "128px",
+        duration: 0.5,
+      });
+    },
+
+    // toggleClass: { targets: ".image", className: "image-resize" },
   });
 </script>
