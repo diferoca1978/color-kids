@@ -20,7 +20,8 @@ const recentPosts = blogPosts
 <section class="max-w-9/12 mx-auto mb-20">
   <div class="container mx-auto">
     <h1
-      class="my-12 md:my-16 tracking-tight text-4xl text-slate-900 text-[min(10vw,60px)] font-bold title"
+      class="my-12 md:my-16 tracking-tight text-4xl text-slate-900 text-[min(10vw,60px)] font-bold"
+      id="title"
     >
       Nuestros posts mas recientes
     </h1>
@@ -34,6 +35,11 @@ const recentPosts = blogPosts
     </div>
   </div>
 </section>
+
+<script>
+  import { blogPostsAnimation } from "../../scripts/homePageAnimations/blogPostsAnimation";
+  blogPostsAnimation();
+</script>
 
 <!-- <style>
   .title {

@@ -120,24 +120,8 @@
 </section>
 
 <script>
-  import { gsap } from "gsap";
-
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.from(".title", {
-    opacity: 0,
-    x: -80,
-    duration: 1.5,
-    ease: "linear",
-    scrollTrigger: {
-      trigger: ".title",
-      start: "top 80%",
-      end: "top 30%",
-      scrub: 1,
-    },
-  });
+  import { servicesAnimations } from "../../scripts/homePageAnimations/servicesAnimations";
+  servicesAnimations();
 </script>
 
 <!-- <style>
