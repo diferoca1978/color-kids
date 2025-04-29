@@ -23,8 +23,8 @@ import MainLayout from "@/layouts/MainLayout.astro";
                 La pagina que buscas no esta disponible!
               </p>
 
-              <button class="btn-tertiary" type="button">
-                <a href="/" class="link_404">Regresar</a>
+              <button class="btn-tertiary back-btn" type="button">
+                <span class="font-manrope">Regresar</span>
               </button>
             </div>
           </div>
@@ -54,4 +54,11 @@ import MainLayout from "@/layouts/MainLayout.astro";
       margin-top: -50px;
     }
   </style>
+
+  <script>
+    const btn = document.querySelector(".back-btn") as HTMLButtonElement;
+    btn.addEventListener("click", () => {
+      window.history.back();
+    });
+  </script>
 </MainLayout>

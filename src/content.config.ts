@@ -22,6 +22,7 @@ const authorCollection = defineCollection({
     avatar: image(),
     instagram: z.string(),
     subtitle: z.string(),
+    bio: z.string(),
   })
 })
 
