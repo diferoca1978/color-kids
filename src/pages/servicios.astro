@@ -1,7 +1,189 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import kidsBallon from "@/assets/Images/kids-ballon.png";
+import Arrow from "@/icons/Arrow.svg";
 ---
 
 <MainLayout title="Servicios">
-    <h1>Servicios</h1>
+    <section class="container mx-auto">
+        <div class="flex flex-col items-center gap-6 max-w-9/12 mx-auto my-10">
+            <div class="flex flex-col text-center md:text-start mb-10">
+                <h1
+                    class="text-[min(10vw,60px)] font-bold text-slate-900 leading-tight"
+                >
+                    Conoce nuestros
+                    <span
+                        class="text-fuchsiaMain font-poppins text-[min(10vw,60px)]"
+                    >
+                        servicios</span
+                    >
+                </h1>
+            </div>
+
+            <div
+                class="w-full grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-8"
+            >
+                <a
+                    href="#"
+                    class="col-span-1 md:col-span-2 lg:col-span-4 lg:row-span-4 border border-slate-200 rounded-2xl"
+                >
+                    <div
+                        class="relative group flex flex-col p-5 md:flex-row items-center gap-6"
+                    >
+                        <div class="flex flex-col w-1/2">
+                            <h2
+                                class="font-extrabold leading-tight tracking-tight uppercase"
+                            >
+                                Terapia ocupacional
+                                <span class="font-poppins text-fuchsiaMain"
+                                    >pediatrica</span
+                                >
+                            </h2>
+                            <div class="h-12"></div>
+                            <div
+                                class="absolute bottom-0.5 md:bottom-2 right-5"
+                            >
+                                <button
+                                    class="flex items-center gap-2 backdrop-blur-sm rounded-full border border-slate-200 p-0.5 md:rounded-none md:border-none"
+                                >
+                                    <span
+                                        class="hidden md:block font-manrope text-slate-900"
+                                        >Ver mas</span
+                                    >
+                                    <span
+                                        class="group-hover:-rotate-[35deg] transition duration-400 ease-in-out"
+                                        ><Arrow /></span
+                                    >
+                                </button>
+                            </div>
+                            <div
+                                class="prose prose-p:text-slate-900 font-manrope leading-tight tracking-tight text-balance"
+                            >
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Impedit magnam alias ullam
+                                    enim accusantium.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <Image
+                                class="w-full h-full object-cover hover:scale-105 transition duration-400 ease-in-out"
+                                src={kidsBallon}
+                                alt="kids ballon"
+                            />
+                        </div>
+                    </div>
+                </a>
+                <a
+                    href="#"
+                    class="col-span-1 md:col-span-1 lg:col-span-2 lg:row-span-4 lg:row-start-5 border border-slate-200 rounded-2xl"
+                >
+                    <div
+                        class="relative group flex flex-col p-5 items-center gap-6"
+                    >
+                        <div class="flex flex-col w-1/2">
+                            <h2
+                                class="font-extrabold leading-tight tracking-tight uppercase"
+                            >
+                                Terapia ocupacional
+                                <span class="font-poppins text-fuchsiaMain"
+                                    >pediatrica</span
+                                >
+                            </h2>
+                            <div class="h-12"></div>
+                            <div
+                                class="absolute bottom-0.5 md:bottom-2 right-5"
+                            >
+                                <button
+                                    class="flex items-center gap-2 backdrop-blur-sm rounded-full border border-slate-200 p-0.5 md:rounded-none md:border-none"
+                                >
+                                    <span
+                                        class="hidden md:block font-manrope text-slate-900"
+                                        >Ver mas</span
+                                    >
+                                    <span
+                                        class="group-hover:-rotate-[35deg] transition duration-400 ease-in-out"
+                                        ><Arrow /></span
+                                    >
+                                </button>
+                            </div>
+                            <div
+                                class="prose prose-p:text-slate-900 font-manrope leading-tight tracking-tight text-balance"
+                            >
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Impedit magnam alias ullam
+                                    enim accusantium.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <Image
+                                class="w-full h-full object-cover hover:scale-105 transition duration-400 ease-in-out"
+                                src={kidsBallon}
+                                alt="kids ballon"
+                            />
+                        </div>
+                    </div>
+                </a>
+                <a
+                    href="#"
+                    class="col-span-1 md:col-span-1 lg:col-span-2 lg:row-start-5 lg:row-span-4 border border-slate-200 rounded-2xl"
+                >
+                    <div
+                        class="relative group flex flex-col p-5 items-center gap-6"
+                    >
+                        <div class="flex flex-col w-1/2">
+                            <h2
+                                class="font-extrabold leading-tight tracking-tight uppercase"
+                            >
+                                Terapia ocupacional
+                                <span class="font-poppins text-fuchsiaMain"
+                                    >pediatrica</span
+                                >
+                            </h2>
+                            <div class="h-12"></div>
+                            <div
+                                class="absolute bottom-0.5 md:bottom-2 right-5"
+                            >
+                                <button
+                                    class="flex items-center gap-2 backdrop-blur-sm rounded-full border border-slate-200 p-0.5 md:rounded-none md:border-none"
+                                >
+                                    <span
+                                        class="hidden md:block font-manrope text-slate-900"
+                                        >Ver mas</span
+                                    >
+                                    <span
+                                        class="group-hover:-rotate-[35deg] transition duration-400 ease-in-out"
+                                        ><Arrow /></span
+                                    >
+                                </button>
+                            </div>
+                            <div
+                                class="prose prose-p:text-slate-900 font-manrope leading-tight tracking-tight text-balance"
+                            >
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Impedit magnam alias ullam
+                                    enim accusantium.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <Image
+                                class="w-full h-full object-cover hover:scale-105 transition duration-400 ease-in-out"
+                                src={kidsBallon}
+                                alt="kids ballon"
+                            />
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 </MainLayout>
