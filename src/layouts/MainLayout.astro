@@ -11,10 +11,10 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es-COL" class="scrollbar-hide lenis lenis-smooth">
+<html lang="es-COL" class="scrollbar-hide lenis lenis-smooth overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <script type="module">
       import "/src/scripts/lenisSmooth.js";
@@ -25,9 +25,8 @@ const { title } = Astro.props;
     <link rel="manifest" href="/site.webmanifest" />
   </head>
 
-  <Navbar />
-
   <body class="w-full p-0 m-0 overflow-x-hidden">
+    <Navbar />
     <main class="w-full mx-auto">
       <div class="relative">
         <div class="absolute inset-0 z-0">
@@ -65,6 +64,4 @@ const { title } = Astro.props;
       }
     </style>
   </body>
-
-
 </html>
