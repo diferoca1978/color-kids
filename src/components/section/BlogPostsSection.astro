@@ -12,13 +12,13 @@ const blogPosts = await getCollection("blog");
 const recentPosts = blogPosts
   .sort(
     (a, b) =>
-      new Date(a.data.pubDate).getTime() - new Date(b.data.pubDate).getTime()
+      new Date(a.data.pubDate).getTime() - new Date(b.data.pubDate).getTime(),
   )
   .slice(0, count);
 ---
 
 <section class="max-w-7xl mx-auto mb-20">
-  <div class="container mx-auto">
+  <div class="container mx-auto px-4">
     <h1
       class="my-12 md:my-16 tracking-tight text-4xl text-slate-900 text-[min(10vw,60px)] font-bold"
       id="title"
