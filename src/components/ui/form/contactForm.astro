@@ -10,7 +10,6 @@ import { actions } from "astro:actions";
   >
     <div class="relative">
       <input
-        transition:persist
         type="text"
         placeholder="Nombre"
         id="fullName"
@@ -111,7 +110,7 @@ import { actions } from "astro:actions";
       class="hidden bg-gradient-to-tl from-lime-600 to-lime-400 p-4 rounded-2xl"
     >
       <p class="font-manrope text-slate-50 font-semibold text-center">
-        ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.
+        ¡Mensaje enviado con éxito!.
       </p>
     </div>
   </form>
@@ -138,7 +137,6 @@ import { actions } from "astro:actions";
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
-    console.log(data);
 
     btnSubmit.setAttribute("disabled", "disabled");
 

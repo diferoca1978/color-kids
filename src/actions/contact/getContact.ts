@@ -17,7 +17,6 @@ export const getContact = defineAction({
   }),
   handler: async ({fullName, email, telefono, inquietudes}) => {
 
-    
     const { data, error } = await resend.emails.send({
       from: 'Color Kids <color-kids@resend.dev>',
       to: [email],
